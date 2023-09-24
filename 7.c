@@ -10,7 +10,7 @@ void printMap(unsigned long player_x, unsigned long player_y, unsigned long n){
                 continue;
             }
 
-            if (j == n - 1 && i == 0) {
+            if (j == n - 1 && i == n - 1) {
                 printf(" F ");
                 continue;
             }
@@ -27,7 +27,7 @@ int main(){
     scanf("%lu", &n);
     assert(n >= 2);
 
-    unsigned long x = 0, y = n - 1;
+    unsigned long x = 0, y = 0;
     int count = 0;
     printMap(x, y, n);
     while (1){
@@ -63,7 +63,7 @@ int main(){
             break;
         }
 
-        if (x == n - 1 && y == 00){
+        if (x == n - 1 && y == n - 1){
             printf("END! Your score: %d", count);
             break;
         }

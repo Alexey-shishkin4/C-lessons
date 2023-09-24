@@ -13,7 +13,6 @@ int length(unsigned long n) {
 
 
 int main(){
-    printf("%d \n", 150 / 60);
     unsigned long l;
     unsigned long r;
     scanf("%lu", &l);

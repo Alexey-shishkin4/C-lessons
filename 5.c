@@ -1,5 +1,6 @@
-#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
+#include <assert.h>
+
 
 int IsPrime(unsigned long long n) {
     for (unsigned long long i = 2;i <= n / 2 ;i++) {
@@ -13,10 +14,8 @@ int IsPrime(unsigned long long n) {
 int main(){
     unsigned long long n;
     scanf("%llu", &n);
-    if (n < 2) {
-        printf("Error!");
-        return 0;
-    }
+
+    assert(n > 2);
 
     for (unsigned long long i = 2; i <= n; i++) {
         if (IsPrime(i) == 1) {
