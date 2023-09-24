@@ -12,6 +12,16 @@ int length(unsigned long n) {
 }
 
 
+int SumOfDigits(unsigned long n){
+    int sum = 0;
+    while (n > 0){
+        sum += n % 10;
+        n /= 10;
+    }
+    return sum;
+}
+
+
 int main(){
     unsigned long l;
     unsigned long r;
@@ -23,16 +33,9 @@ int main(){
     for (; l <= r; l++) {
         unsigned long x = l;
         if (length(x) == 6) {
-            unsigned long first_sum = 0;
-            for (int j = 0; j <= 2; j++) {
-                first_sum += x % 10;
-                x /= 10;
-            }
-            unsigned long second_sum = 0;
-            for (int j = 0; j <= 2; j++) {
-                second_sum += x % 10;
-                x /= 10;
-            }
+            unsigned long first_sum = SumOfDigits(x % 1000);
+
+            unsigned long second_sum = SumOfDigits(x / 1000);
 
             if (first_sum == second_sum){
                 printf("%d \n", l);
