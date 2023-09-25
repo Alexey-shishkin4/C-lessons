@@ -67,6 +67,7 @@ int compareArrays(int arr1[], size_t len1, int arr2[], size_t len2) {
         return 0;
     else if (len1 < len2)
         return -1;
+    return 1;
 }
 
 
