@@ -38,7 +38,7 @@ void PrintPascal(int** arr, int n){
 
 
 int** CreateMassive(int n){
-    int** arr = (int**) malloc(n * sizeof(int));
+    int** arr = (int**) malloc(n * sizeof(int*));
     nullChek(arr);
     int m = 1;
     for (size_t i = 0; i < n; i++){
@@ -64,7 +64,8 @@ void coeff(int** arr, int n){
 
 int main() {
     //printf("%d", factorial(3));
-    int n = 6;
+    int n;
+    scanf("%d", &n);
     int** arr;
     arr = CreateMassive(n);
 
