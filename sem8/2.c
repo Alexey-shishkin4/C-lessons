@@ -79,14 +79,31 @@ void nullChek(void* ptr){
 }
 
 
+int* myRealloc(int* arr, size_t len, size_t newlen){
+    assert(len <= newlen);
+
+    int *new_arr = malloc(newlen * sizeof(int));
+    nullChek(new_arr);
+
+    for(size_t i = 0; i < len; i++)
+        new_arr[i] = arr[i];
+    free(arr);
+
+    return new_arr;
+}
+
+
 int main() {
-    int* arr = (int*) malloc(500 * sizeof(int));
+    int* arr = (int*) malloc(1 * sizeof(int));
     nullChek(arr);
     int input, len = -1;
+    int length = 1;
     do {
         len++;
         scanf("%d", &input);
         arr[len] = input;
+        arr = myRealloc(arr, length, length * 2);
+        length *= 2;
     } while (input != 0);
 
     int* arr1 = (int*) malloc(len * sizeof(int));
@@ -94,7 +111,6 @@ int main() {
     for (size_t j = 0; j < len; j++){
         arr1[j] = arr[j];
     }
-
     free(arr);
 
     // тестирование функций
@@ -112,6 +128,8 @@ int main() {
 
     int arr2[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     printf("%d", compareArrays(arr1, len, arr2, 10));
+
+    free(arr1);
 
     return 0;
 }
