@@ -1,33 +1,35 @@
 #include <stdio.h>
-#include <stdlib.h>
 
-
-int* findSubArray(int arr1[], int len, int arr2[], int len2, int* result) {
-    int start_subarr;
-    size_t c = 0;
-    for (size_t i = 0; i < len; i++) {
-        if (c == len2){
-            *result = start_subarr - len2 + 1;
-            return  &(arr1[start_subarr - len2 + 1]);
+int* findSubArr(int* arr1, int len1, int* arr2, int len2) {
+    for (int i = 0; i <= len1 - len2; i++) {
+        int found = 1;
+        for (int j = 0; j < len2; j++) {
+            if (arr1[i + j] != arr2[j]) {
+                found = 0;
+                break;
+            }
         }
-        if (arr1[i] == arr2[c]){
-            start_subarr = i;
-            c++;
+        if (found) {
+            return &arr1[i];
         }
-        else
-            c = 0;
     }
     return 0;
 }
 
 
 int main() {
-    int arr1[9] = { 0, 1, 8, 7, 4, 1, 8, 7, 6};
-    int arr2[4] = {8, 7, 4, 1};
+    int arr1[] = {0, 1, 8, 7, 4, 1, 8, 7, 6};
+    int arr2[] = {8, 7};
+    int len1 = sizeof(arr1) / sizeof(arr1[0]);
+    int len2 = sizeof(arr2) / sizeof(arr2[0]);
 
-    int res;
-    int* a = findSubArray(arr1, 9, arr2, 4, &res);
-    printf("%d \n", a);
-    printf("%d", res);
+
+    int* result = findSubArr(arr1, len1, arr2, len2);
+    if (result != 0) {
+        printf("index: %d\n", result - arr1);
+    } else {
+        printf("Not found\n");
+    }
+
     return 0;
 }
