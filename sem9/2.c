@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+
 int* findSubArr(int* arr1, int len1, int* arr2, int len2) {
     for (int i = 0; i <= len1 - len2; i++) {
         int found = 1;
@@ -23,9 +24,8 @@ int main() {
     int len1 = sizeof(arr1) / sizeof(arr1[0]);
     int len2 = sizeof(arr2) / sizeof(arr2[0]);
 
-
     int* result = findSubArr(arr1, len1, arr2, len2);
-    if (result != 0) {
+    if (result != NULL) {
         printf("index: %d\n", result - arr1);
     } else {
         printf("Not found\n");
