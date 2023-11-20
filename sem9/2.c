@@ -25,7 +25,7 @@ int main() {
     int len2 = sizeof(arr2) / sizeof(arr2[0]);
 
     int* result = findSubArr(arr1, len1, arr2, len2);
-    if (result != NULL) {
+    if (result != 0) {
         printf("index: %d\n", result - arr1);
     } else {
         printf("Not found\n");

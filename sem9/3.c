@@ -19,7 +19,7 @@ int* findSubArr(int* arr1, int len1, int* arr2, int len2) {
 
 void removeSubArr(int* arr1, int* len1, int* arr2, int len2) {
     int* found;
-    while ((found = findSubArr(arr1, *len1, arr2, len2)) != NULL) {
+    while ((found = findSubArr(arr1, *len1, arr2, len2)) != 0) {
         for (int *p = found; p < arr1 + *len1 - len2; p++) {
             *p = *(p + len2);
         }
